@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.rxjavaretrofit.R;
+import com.example.rxjavaretrpfot.R;
 
 public class MainActivity extends AppCompatActivity {
 
