@@ -1,4 +1,4 @@
-package com.example.rxjavaretrpfot;
+package com.example.rxjavaretrofit;
 
 import android.content.Context;
 

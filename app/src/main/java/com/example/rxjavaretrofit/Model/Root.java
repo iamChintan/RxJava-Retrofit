@@ -1,4 +1,4 @@
-package com.example.rxjavaretrpfot.Model;
+package com.example.rxjavaretrofit.Model;
 
 public class Root{
     public int userId;
