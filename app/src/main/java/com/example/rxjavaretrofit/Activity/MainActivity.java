@@ -13,10 +13,10 @@ import com.example.rxjavaretrofit.Retrofit.RetrofitClient;
 import com.example.rxjavaretrpfot.R;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
@@ -44,21 +44,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchData() {
         compositeDisposable.add(irootService.getRoots()
-                .subscribe(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()))
-                .subscribe(new Consumer<List<Root>>() {
-
-                    @Override
-                    public void accept(List<Root> roots) {
-                        diplayData(roots);
-                    }
-                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((Consumer<? super List<Root>>) posts -> displayData(posts)));
     }
 
-    private void diplayData(List<Root> roots) {
-        PostAdaptor adaptor = new PostAdaptor(this, roots);
-        recyclerView.setAdapter(adaptor);
+    private void displayData(List<Root> posts) {
+        PostAdaptor adapter = new PostAdaptor(this,posts);
+        recyclerView.setAdapter(adapter);
     }
+
 
     @Override
     protected void onStop() {
