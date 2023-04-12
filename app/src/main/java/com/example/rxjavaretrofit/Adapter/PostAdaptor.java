@@ -20,9 +20,9 @@ public class PostAdaptor extends RecyclerView.Adapter<PostAdaptor.ViewHolder> {
     List<Root> rootList;
     Context context;
 
-    public PostAdaptor(Context context, List<Root> rootList) {
-        rootList = rootList;
-        context = context;
+    public PostAdaptor(Context ctx, List<Root> list) {
+        rootList = list;
+        context = ctx;
     }
 
     @NonNull

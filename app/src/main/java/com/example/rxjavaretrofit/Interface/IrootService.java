@@ -11,6 +11,6 @@ import retrofit2.http.Query;
 
 public interface IrootService {
 
-    @GET("posts")
+    @GET("posts/")
     Observable<List<Root>> getRoots();
 }

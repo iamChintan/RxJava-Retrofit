@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.rxjavaretrofit.Adapter.PostAdaptor;
 import com.example.rxjavaretrofit.Interface.IrootService;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     IrootService irootService;
     RecyclerView recyclerView;
+    PostAdaptor adapter;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
 
@@ -39,10 +41,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        fetchData();
+        Log.e("iAmChintan", "onCreate: " );
+
+        if (irootService != null){
+            Log.e("iAmChintan", "onCreate: + Fetch" );
+            fetchData();
+        }
     }
 
     private void fetchData() {
+        Log.e("iAmChintan", "fetchData: " + "Fetching...." );
         compositeDisposable.add(irootService.getRoots()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -50,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayData(List<Root> posts) {
-        PostAdaptor adapter = new PostAdaptor(this,posts);
+        Log.e("iAmChintan", "displayData: " + posts );
+        adapter = new PostAdaptor(this,posts);
         recyclerView.setAdapter(adapter);
     }
 
