@@ -1,6 +1,7 @@
 package com.example.rxjavaretrofit.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,25 +38,23 @@ public class PostAdaptor extends RecyclerView.Adapter<PostAdaptor.ViewHolder> {
     public void onBindViewHolder(@NonNull PostAdaptor.ViewHolder holder, int position) {
         holder.txtTitle.setText(rootList.get(position).title);
         holder.txtContent.setText(rootList.get(position).body);
-        holder.txtAuthor.setText(rootList.get(position).id);
-
     }
 
     @Override
     public int getItemCount() {
+        Log.e("PostAdaptor", "getItemCount: " + rootList.size() );
         return rootList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtTitle, txtContent, txtAuthor;
+        TextView txtTitle, txtContent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             txtTitle = (TextView) itemView.findViewById(R.id.txtTitle);
             txtContent = (TextView) itemView.findViewById(R.id.txtContent);
-            txtAuthor = (TextView) itemView.findViewById(R.id.txtAuthor);
         }
     }
 }

@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Log.e("iAmChintan", "onCreate: " );
+        Log.e("iAmChintan", "irootService: " + irootService);
 
         if (irootService != null){
             Log.e("iAmChintan", "onCreate: + Fetch" );
